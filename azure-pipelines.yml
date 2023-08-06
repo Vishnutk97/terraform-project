@@ -10,7 +10,7 @@ steps:
 - script: |
     # Install Terraform (if not already installed)
     # Replace the version with the desired Terraform version
-    curl -o terraform.zip https://releases.hashicorp.com/terraform/X.XX.X/terraform_X.XX.X_linux_amd64.zip
+    curl -o terraform.zip https://releases.hashicorp.com/terraform/1.5.3/terraform_1.5.3_linux_amd64.zip
     unzip terraform.zip
     sudo mv terraform /usr/local/bin/
 
