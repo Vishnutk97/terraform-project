@@ -22,6 +22,5 @@ steps:
       backendServiceArm: 'Azure for Students(324ab21b-0045-4562-84eb-01df0f16517c)'
       backendAzureRmResourceGroupName: 'My-terraform-grp'
       backendAzureRmStorageAccountName: 'My-new-container'
-      backendAzureRmContainerName: 'vishnu690777'
-      backendAzureRmKey: 'terraform.tfstate'
+      backendAzureRmContainerName: 'vishnu690777' 
       
