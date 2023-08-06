@@ -13,14 +13,12 @@ steps:
     curl -o terraform.zip https://releases.hashicorp.com/terraform/1.5.3/terraform_1.5.3_linux_amd64.zip
     unzip terraform.zip
     sudo mv terraform /usr/local/bin/
-
   displayName: 'Install Terraform'
-  - task: TerraformTaskV4@4
-    inputs:
-      provider: 'azurerm'
-      command: 'init'
-      backendServiceArm: 'Azure for Students(324ab21b-0045-4562-84eb-01df0f16517c)'
-      backendAzureRmResourceGroupName: 'My-terraform-grp'
-      backendAzureRmStorageAccountName: 'My-new-container'
-      backendAzureRmContainerName: 'vishnu690777' 
-      
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Azure for Students(324ab21b-0045-4562-84eb-01df0f16517c)'
+    backendAzureRmResourceGroupName: 'My-terraform-grp'
+    backendAzureRmStorageAccountName: 'My-new-container'
+    backendAzureRmContainerName: 'vishnu690777'
