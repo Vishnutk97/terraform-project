@@ -15,28 +15,3 @@ steps:
     sudo mv terraform /usr/local/bin/
 
   displayName: 'Install Terraform'
-
-- task: TerraformCLI@0
-  displayName: 'Terraform Init'
-  inputs:
-    command: 'init'
-    workingDirectory: 'path/to/your/terraform/config'  # Replace with the path to your main.tf file
-    backendAzureRmResourceGroupName: 'AZ_rg'  # Replace with the appropriate resource group name
-    backendAzureRmStorageAccountName: 'workshopdemostorage8907'  # Replace with the storage account name
-    backendAzureRmContainerName: 'workshopdemotf'  # Replace with the container name
-    backendAzureRmKey: 'terraform.tfstate'  # Replace with the backend key (state file name)
-
-- task: TerraformCLI@0
-  displayName: 'Terraform Plan'
-  inputs:
-    command: 'plan'
-    workingDirectory: 'path/to/your/terraform/config'  # Replace with the path to your main.tf file
-    environmentServiceNameAzureRM: 'your-azure-service-connection-name'  # Replace with the name of your Azure service connection
-
-- task: TerraformCLI@0
-  displayName: 'Terraform Apply'
-  inputs:
-    command: 'apply'
-    workingDirectory: 'path/to/your/terraform/config'  # Replace with the path to your main.tf file
-    environmentServiceNameAzureRM: 'your-azure-service-connection-name'  # Replace with the name of your Azure service connection
-    commandOptions: '-auto-approve'
