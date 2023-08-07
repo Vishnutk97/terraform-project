@@ -23,9 +23,38 @@ steps:
   inputs:
     terraformVersion: 'latest'
 
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
+
 variables:
   subscription_id = '324ab21b-0045-4562-84eb-01df0f16517c'
   tenant_id       = 'c6dbf372-8511-460f-9d8f-863d8256a37d'
   client_id       = '1a83fe70-9fe4-4162-a1e7-7cdc3b2a6cea'
   client_secret   = 'E5G8Q~TcneeE-uLQQHjeAggklsU4BPmQhry~Fay7'
+  
+- script: 
+    # Login to Azure
+    az login --service-principal -u $(client_id) -p $(client_secret) --tenant $(tenant_id)
+
+    # Set the Azure subscription
+    az account set --subscription $(subscription_id)
+
+    # Change directory to your Terraform configuration (local file path)
+    git clone https://github.com/Vishnutk97/terraform-project.git
+    cd terraform-project # Replace this with the actual path to your Terraform configuration files
+
+    # Initialize Terraform
+    terraform init
+
+    # Plan the Terraform deployment
+    terraform plan -out=tfplan -var "subscription_id=$(subscription_id)" -var "client_id=$(client_id)" -var "client_secret=$(client_secret)" -var "tenant_id=$(tenant_id)"
+
+    # Apply the Terraform configuration to create the AKS cluster
+    terraform apply -auto-approve tfplan
+  displayName: 'Deploy AKS cluster with Terraform'
+
+
 
