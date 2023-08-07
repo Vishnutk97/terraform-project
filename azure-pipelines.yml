@@ -56,5 +56,10 @@ variables:
   terraform apply -auto-approve tfplan
   displayName: 'Deploy AKS cluster with Terraform'
 
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Azure for Students(324ab21b-0045-4562-84eb-01df0f16517c)'
 
 
